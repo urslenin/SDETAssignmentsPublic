@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testsuite" verbose="1" >
+
+    <test name ="testorder2">
+        <classes>
+            <class name = "SDETFirstTestNG" >
+            </class>
+        </classes>
+
+    </test>
+</suite>
