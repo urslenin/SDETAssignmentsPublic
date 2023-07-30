@@ -36,18 +36,19 @@ class MMT_FlightSearch(EnvironmentSetup):
 
         # Verify Promotional Alert
         try:
-            self.wait = WebDriverWait(self.driver, 10)
+            self.wait = WebDriverWait(self.driver, 5)
             self.wait.until(expected_conditions.frame_to_be_available_and_switch_to_it((By.XPATH, self.promotionAlert)))
             self.wait.until(expected_conditions.element_to_be_clickable((By.XPATH, self.alertClose))).click()
         except:
             print("Promotional Alert not visible today")
         # Close SignUp Page
-        home = Home(driver)
+        home = Home(self.driver)
         self.action = ActionChains(self.driver)
         self.action.double_click(home.getMMTLogo()).perform()
+        sleep(2)
         home.getFlightsPath().click()
         # Enter Search Flight
-        flightSearch = FlightSearch(driver)
+        flightSearch = FlightSearch(self.driver)
         self.waitForElementClickable(self.fromCityPath, 20)
         flightSearch.getFromCityPath().click()
         flightSearch.getFromCityInput().send_keys(self.fromLocation)

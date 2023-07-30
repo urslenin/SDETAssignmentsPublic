@@ -7,27 +7,20 @@ class FlightSearch(object):
     def __init__(self, driver):
         self.driver = driver
 
-        self.fromCityInput = driver.find_element(By.XPATH, Locators.fromCityInput)
-        self.fromCityPath = driver.find_element(By.XPATH, Locators.fromCityPath)
-        self.toCityXpath = driver.find_element(By.XPATH, Locators.toCityXpath)
-        self.toCityInput = driver.find_element(By.XPATH, Locators.toCityInput)
-        self.searchBtn = driver.find_element(By.XPATH, Locators.searchBtn)
-        self.returnXpath = driver.find_element(By.XPATH, Locators.returnXpath)
-
     def getFromCityInput(self):
-        return self.fromCityInput
+        return self.driver.find_element(By.XPATH, Locators.fromCityInput)
 
     def getFromCityPath(self):
-        return self.fromCityPath
+        return self.driver.find_element(By.XPATH, Locators.fromCityPath)
 
     def getToCityXpath(self):
-        return self.toCityXpath
+        return self.driver.find_element(By.XPATH, Locators.toCityXpath)
 
     def getToCityInput(self):
-        return self.toCityInput
+        return self.driver.find_element(By.XPATH, Locators.toCityInput)
 
     def getSearchBtn(self):
-        return self.searchBtn
+        return self.driver.find_element(By.XPATH, Locators.searchBtn)
 
     def getReturnXpath(self):
-        return self.returnXpath
+        return self.driver.find_element(By.XPATH, Locators.returnXpath)

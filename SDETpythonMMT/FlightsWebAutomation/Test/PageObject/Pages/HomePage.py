@@ -7,12 +7,9 @@ class Home(object):
     def __init__(self, driver):
         self.driver = driver
 
-        self.flightsPath = driver.find_element(By.XPATH, Locators.flightsPath)
-        self.mmtLogo = driver.find_element(By.XPATH, Locators.mmtLogo)
-
     def getFlightsPath(self):
-        return self.flightsPath
+        return self.driver.find_element(By.XPATH, Locators.flightsPath)
 
     def getMMTLogo(self):
-        return self.mmtLogo
+        return self.driver.find_element(By.XPATH, Locators.mmtLogo)
 

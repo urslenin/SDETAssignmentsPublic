@@ -1,6 +1,6 @@
 class Locators(object):
     # flight search locator
-    flightsPath = "//span[text()='Flights']"
+    flightsPath = "//li[@class='menu_Flights']//span[text()='Flights']"
     fromCityPath = "//input[@id='fromCity']"
     fromCityInput = "//input[@placeholder='From']"
     toCityXpath = "//input[@id='toCity']"
