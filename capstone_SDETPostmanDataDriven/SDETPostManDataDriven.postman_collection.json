@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "14b7a5bd-043e-438c-bbcb-46a4da4deefb",
+		"name": "SDETPostManDataDriven",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "userRequestDataDrivencsv",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var env = pm.environment.get(\"runenv\");\r",
+							"if (env === \"local\")  {\r",
+							"    pm.request.headers.remove('delay')\r",
+							"    pm.request.headers.add({key: 'delay', value: pm.globals.get(\"local_delay\") })\r",
+							"}\r",
+							"\r",
+							"    "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Verify total_pages details\", function () {\r",
+							"    pm.expect(jsonData.total_pages).is.to.equal(2);\r",
+							"});\r",
+							"pm.test(\"Verify user[1] values\", function () { \r",
+							"    pm.expect(jsonData.data[0].id).is.to.equal(1); \r",
+							"    pm.expect(jsonData.data[0].email).is.to.equal(\"george.bluth@reqres.in\"); \r",
+							"    pm.expect(jsonData.data[0].first_name).is.to.equal(\"George\"); \r",
+							"    pm.expect(jsonData.data[0].last_name).is.to.equal(\"Bluth\"); \r",
+							"    pm.expect(jsonData.data[0].avatar).is.to.equal(\"https://reqres.in/img/faces/1-image.jpg\"); \r",
+							"});\r",
+							"pm.test(\"Verify user[2] values\", function () { \r",
+							"    pm.expect(jsonData.data[1].id).is.to.equal(2); \r",
+							"    pm.expect(jsonData.data[1].email).is.to.equal(\"janet.weaver@reqres.in\"); \r",
+							"    pm.expect(jsonData.data[1].first_name).is.to.equal(\"Janet\"); \r",
+							"    pm.expect(jsonData.data[1].last_name).is.to.equal(\"Weaver\"); \r",
+							"    pm.expect(jsonData.data[1].avatar).is.to.equal(\"https://reqres.in/img/faces/2-image.jpg\"); \r",
+							"});\r",
+							"pm.test(\"Verify user[3] values\", function () { \r",
+							"    pm.expect(jsonData.data[2].id).is.to.equal(3);\r",
+							"    pm.expect(jsonData.data[2].email).is.to.equal(\"emma.wong@reqres.in\"); \r",
+							"    pm.expect(jsonData.data[2].first_name).is.to.equal(\"Emma\"); \r",
+							"    pm.expect(jsonData.data[2].last_name).is.to.equal(\"Wong\"); \r",
+							"    pm.expect(jsonData.data[2].avatar).is.to.equal(\"https://reqres.in/img/faces/3-image.jpg\"); \r",
+							"});\r",
+							"pm.test(\"Verify user[4] values\", function () { \r",
+							"    pm.expect(jsonData.data[3].id).is.to.equal(4);\r",
+							"    pm.expect(jsonData.data[3].email).is.to.equal(\"eve.holt@reqres.in\"); \r",
+							"    pm.expect(jsonData.data[3].first_name).is.to.equal(\"Eve\"); \r",
+							"    pm.expect(jsonData.data[3].last_name).is.to.equal(\"Holt\"); \r",
+							"    pm.expect(jsonData.data[3].avatar).is.to.equal(\"https://reqres.in/img/faces/4-image.jpg\"); \r",
+							"});\r",
+							"pm.test(\"Verify user[5] values\", function () { \r",
+							"    pm.expect(jsonData.data[4].id).is.to.equal(5);\r",
+							"    pm.expect(jsonData.data[4].email).is.to.equal(\"charles.morris@reqres.in\"); \r",
+							"    pm.expect(jsonData.data[4].first_name).is.to.equal(\"Charles\"); \r",
+							"    pm.expect(jsonData.data[4].last_name).is.to.equal(\"Morris\"); \r",
+							"    pm.expect(jsonData.data[4].avatar).is.to.equal(\"https://reqres.in/img/faces/5-image.jpg\"); \r",
+							"});\r",
+							"pm.test(\"Verify user[6] values\", function () { \r",
+							"    pm.expect(jsonData.data[5].id).is.to.equal(6);\r",
+							"    pm.expect(jsonData.data[5].email).is.to.equal(\"tracey.ramos@reqres.in\"); \r",
+							"    pm.expect(jsonData.data[5].first_name).is.to.equal(\"Tracey\"); \r",
+							"    pm.expect(jsonData.data[5].last_name).is.to.equal(\"Ramos\"); \r",
+							"    pm.expect(jsonData.data[5].avatar).is.to.equal(\"https://reqres.in/img/faces/6-image.jpg\"); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?{{delaykey}}={{delayvalue}}",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "{{delaykey}}",
+							"value": "{{delayvalue}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
