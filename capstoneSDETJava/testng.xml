@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testsuite" verbose="1" >
+
+    <test name ="login">
+        <parameter name="username_valid" value="standard_user" />
+        <parameter name="password_valid" value="secret_sauce" />
+        <parameter name="username_invalid" value="standard_user_invalid" />
+        <parameter name="password_invalid" value="secret_sauce_invalid" />
+        <classes>
+            <class name = "regression.LoginTestFailure" > </class>
+            <class name = "regression.LoginTestSuccess" > </class>
+        </classes>
+
+    </test>
+</suite>

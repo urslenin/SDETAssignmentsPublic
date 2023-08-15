@@ -1,0 +1,21 @@
+2023-08-15 19:57:58,158  INFO [main] Log:18 - Log4j initiated
+ 2023-08-15 19:57:58,162  INFO [main] Log:18 - Test 
+ 2023-08-15 19:58:05,257  INFO [main] Log:10 - ***************             TestLoginFailure       ***************
+ 2023-08-15 19:58:06,043  INFO [main] Log:18 - Login with invalid credentials completed
+ 2023-08-15 19:58:10,099  INFO [main] Log:18 - Verify Login Error :Epic sadface: Username and password do not match any user in this service
+ 2023-08-15 19:58:10,254  INFO [main] Log:10 - ***************             TestLoginFailure       ***************
+ 2023-08-15 19:58:10,265  INFO [main] Log:10 - ***************             TestLoginSuccess       ***************
+ 2023-08-15 19:58:10,992  INFO [main] Log:18 - Login Completed
+ 2023-08-15 19:58:15,011  INFO [main] Log:18 - Verify Title: Swag Labs
+ 2023-08-15 19:58:15,293  INFO [main] Log:14 - ***************                          -E---N---D-             ***************
+ 2023-08-15 19:59:06,971  INFO [main] Log:18 - Log4j initiated
+ 2023-08-15 19:59:06,979  INFO [main] Log:18 - Test 
+ 2023-08-15 19:59:12,550  INFO [main] Log:10 - ***************             TestLoginFailure       ***************
+ 2023-08-15 19:59:13,402  INFO [main] Log:18 - Login with invalid credentials completed
+ 2023-08-15 19:59:17,462  INFO [main] Log:18 - Verify Login Error :Epic sadface: Username and password do not match any user in this service
+ 2023-08-15 19:59:17,593  INFO [main] Log:14 - ***************                          -E---N---D-             ***************
+ 2023-08-15 19:59:17,593  INFO [main] Log:10 - ***************             TestLoginSuccess       ***************
+ 2023-08-15 19:59:18,285  INFO [main] Log:18 - Login Completed
+ 2023-08-15 19:59:22,300  INFO [main] Log:18 - Verify Title: Swag Labs
+ 2023-08-15 19:59:22,519  INFO [main] Log:14 - ***************                          -E---N---D-             ***************
+ 
