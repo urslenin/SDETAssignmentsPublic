@@ -1,0 +1,3 @@
+TestName,email,password
+LoginSuccess,eve.holt@reqres.in,cityslicka
+LoginFail,eve.holt@reqres.in,

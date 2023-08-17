@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "f1bdbbde-101c-4785-bfa3-c286d08dcb49",
+		"name": "captone_csv_NegativeScenarioPostman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5809405"
+	},
+	"item": [
+		{
+			"name": "Initialize",
+			"item": [
+				{
+					"name": "Test Case Router",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Get the Name field of the test case data.",
+									"// We will use this to route to the appropriate next request.",
+									"// A value of `null` will instruct the collection runner to stop.",
+									"const testName = pm.iterationData.get('TestName') || null;",
+									"",
+									"// Dynamically set the next request.",
+									"if(iteration>0){",
+									"postman.setNextRequest(testName);",
+									"}   "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/delay/0",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"delay",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test Cases",
+			"item": [
+				{
+					"name": "LoginSuccess",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Verify Login values\", function () {\r",
+									"    pm.expect(jsonData.token).is.to.equal(\"QpwL5tke4Pnpja7X4\");\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var c = pm.info.iteration\r",
+									"pm.variables.set('itr', c)\r",
+									" console.log(\" itearion >>> \"+c)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Post Login Request"
+					},
+					"response": []
+				},
+				{
+					"name": "LoginFail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Login invalid matches with messge 'Missing password' \", function () {\r",
+									"        pm.expect(pm.response.text()).to.include(\"Missing password\");\r",
+									"    });\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var c = pm.info.iteration\r",
+									"pm.variables.set('itr', c)\r",
+									" console.log(\"itearion <<\"+c)\r",
+									" \r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/login",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Post_Login_Unsuccesfull"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// Get the test subject from the response body.",
+							"",
+							"",
+							"// Assign the expected fields from the test case data.",
+							"const expectedTestName = pm.iterationData.get('TestName');",
+							"const expectedEmail = pm.iterationData.get('email');",
+							"const expectedPassword = pm.iterationData.get('password');",
+							"",
+							"console.log(expectedTestName);",
+							"console.log(expectedEmail);",
+							"console.log(expectedPassword);",
+							"",
+							"// When the set of requests we want to execute are complete for this run,",
+							"// set the next request to `null` to stop the Collection Runner.",
+							"postman.setNextRequest(null);"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"if (pm.info.iteration > 1){",
+					"postman.setNextRequest();",
+					"}",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
